@@ -1,11 +1,16 @@
-<h1>Tasks#index</h1>
-<% @tasks.each do |task| %>
-    <li>
-    <a href="<%= task_path(task) %>">
-      <%= task.title %>
-    </a>
-  </li>
-<br>
-  <% end %>
+<link rel="stylesheet" href="taskapi/app/assets/stylesheets/application.css">
+<center>
+  <h1>Tasks</h1>
 
-  <%= link_to "Create New Task", new_task_path %>
+  <div class="grid-container">
+    <% @tasks.each do |task| %>
+      <div>
+        <a href="<%= task_path(task) %>">
+          <%= task.title %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <h2><%= link_to "Create New Task", new_task_path %></h2>
+</center>

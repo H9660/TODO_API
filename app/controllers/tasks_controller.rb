@@ -37,13 +37,16 @@ class TasksController < ApplicationController   #This application file is global
       render :edit, status: :unprocessable_entity
     end
   end
-
-  def destroy
-    @task.destroy
-    head :no_content
-  end
-
   
+  def destroy  
+    @task= Task.find(params[:id])
+    @task.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+  
+    
+    
   private
 
   def set_task
