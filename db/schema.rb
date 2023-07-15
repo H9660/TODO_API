@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_084113) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_173903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_084113) do
     t.integer "salary"
   end
 
+  create_table "subtasks", force: :cascade do |t|
+    t.string "title"
+    t.boolean "completed"
+    t.bigint "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.boolean "completed"
@@ -27,4 +36,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_084113) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "subtasks", "tasks"
 end

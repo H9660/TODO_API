@@ -1,6 +1,8 @@
-<h2>Title: <%=@task.title %></h1>
+<!-- This is used to show the details of one task. -->
+<H2>Task</h2>
+<h3>Title: <%=@task.title %></h1>
 
-<h2>Completed: <%= @task.completed %></h2>
+<h3>Completed: <%= @task.completed %></h3>
 
 <ul style="display: flex; gap: 30px; list-style-type: none;">
   <li><%= link_to "Edit", edit_task_path(@task) %></li>
@@ -8,4 +10,25 @@
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
+  <li><%= link_to "New", new_task_path(@task) %></li>
 </ul>
+
+
+
+<h2>Subtasks</h2>
+<% @task.subtasks.each do |subtask| %>
+  <p>
+    <strong>Subtask:</strong>
+    <%= subtask.title %>
+  </p>
+
+  <p>
+    <strong>Completed:</strong>
+    <%= subtask.completed %>
+  </p>
+<% end %>
+
+
+<h3>Add a subtask:</h3>
+<%= render 'subtasks/form' %>
+<% end %>

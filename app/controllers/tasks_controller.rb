@@ -17,8 +17,8 @@ class TasksController < ApplicationController   #This application file is global
   def create
     @task = Task.new(task_params)
     if @task.save
-      render json: @task, status: :created, location: @task 
-      # redirect_to @task   #if the save is successful then we are redirected to the task page
+      # render json: @task, status: :created, location: @task 
+      redirect_to @task   #if the save is successful then we are redirected to the task page
     else
       render json: @task.errors,  status: :unprocessable_entity
     end
@@ -45,7 +45,6 @@ class TasksController < ApplicationController   #This application file is global
     redirect_to root_path, status: :see_other
   end
   
-    
     
   private
 

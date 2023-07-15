@@ -1,0 +1,14 @@
+<%= form_with model: [ @task, @task.subtasks.build ] do |form| %>
+    <p>
+      <%= form.label :Title %><br>
+      <%= form.text_field :title %>
+    </p>
+    <p>
+      <%= form.label :Completed %><br>
+      <%= form.text_field :completed %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+  
