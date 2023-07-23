@@ -1,34 +1,37 @@
 <!-- This is used to show the details of one task. -->
-<H2>Task</h2>
-<h3>Title: <%=@task.title %></h1>
+<link rel="stylesheet" href="taskapi/app/assets/stylesheets/application.css">
+<h2 class="other-headings">Task</h2>
+<h3>Title: <%=@task.title %></h3>
 
 <h3>Completed: <%= @task.completed %></h3>
 
-<ul style="display: flex; gap: 30px; list-style-type: none;">
+<ul style="display: flex; gap: 10px; list-style-type: none; padding-left: 3px; padding-bottom: 20px;">
   <li><%= link_to "Edit", edit_task_path(@task) %></li>
-  <li><%= link_to "Destroy", task_path(@task), data: {
+  <li><%= link_to "Delete", task_path(@task), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
   <li><%= link_to "New", new_task_path(@task) %></li>
 </ul>
 
+<!-- Here all the _subtasks.html.erb is rendered -->
+<h2 class="other-headings">Subtasks</h2>
 
-
-<h2>Subtasks</h2>
+<div class="grid-container">
 <% @task.subtasks.each do |subtask| %>
-  <p>
-    <strong>Subtask:</strong>
-    <%= subtask.title %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= subtask.completed %>
-  </p>
+  <div>
+    <h3 style>Title: <%=subtask.title %></h3>
+    <h3>Completed: <%= subtask.completed %></h3>
+    <%= link_to "Edit", edit_task_subtask_path(@task) %>
+    <%= link_to "Destroy", [subtask.task, subtask], data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %>
+  </div>
 <% end %>
+</div>
 
 
-<h3>Add a subtask:</h3>
-<%= render 'subtasks/form' %>
-<% end %>
+<!-- Here _form.html.erb is rendered-->
+<h2 class="other-headings">Add a subtask:</h3>
+<%= render 'subtasks/form' %>     

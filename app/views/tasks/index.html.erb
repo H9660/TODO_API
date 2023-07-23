@@ -1,7 +1,7 @@
 <!-- this is the main page which is rendered when the website reloads -->
-<link rel="stylesheet" href="taskapi/app/assets/stylesheets/application.css">
+
 <center>
-  <h1>Tasks</h1>
+  <h1 class="home-headings">Tasks</h1>
 
   <div class="grid-container">
     <% @tasks.each do |task| %>
@@ -13,5 +13,6 @@
     <% end %>
   </div>
   <br>
+
   <h2><%= link_to "Create New Task", new_task_path %></h2>
 </center>

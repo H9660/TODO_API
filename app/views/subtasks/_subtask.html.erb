@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="taskapi/app/assets/stylesheets/application.css">
+<p>
+  <strong>Title:</strong>
+  <%= subtask.title %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= subtask.completed %>
+</p>
+
+<p>
+<%= link_to "Edit", edit_task_subtask_path(@task) %>
+<%= link_to "Destroy", [subtask.task, subtask], data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %>
+</p>

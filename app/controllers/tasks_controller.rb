@@ -1,8 +1,12 @@
-class TasksController < ApplicationController   #This application file is globally available
+class TasksController < ApplicationController  
+  
+  #This application file is globally available
   # Here the task is representing our data
+  http_basic_authenticate_with name: "task_admin", password: "123", except: [:index, :show, :destroy]
+
   def index    #these are called actions
     @tasks = Task.all                  #returns all the tasks
-    # render json: @tasks, status: :created, location: @task 
+    # render json: @tasks, status: :created, location: @task    #rendering data in JSON format
   end
 
   def show
@@ -14,17 +18,17 @@ class TasksController < ApplicationController   #This application file is global
     @task = Task.new
   end
 
-  def create
+  def create                         #creates a task
     @task = Task.new(task_params)
     if @task.save
-      # render json: @task, status: :created, location: @task 
+      # render json: @task, status: :created, location: @task   #rendering data in JSON format
       redirect_to @task   #if the save is successful then we are redirected to the task page
     else
       render json: @task.errors,  status: :unprocessable_entity
     end
   end
 
-  def edit
+  def edit                           #updates a task
     @task = Task.find(params[:id])
   end
 
@@ -38,7 +42,7 @@ class TasksController < ApplicationController   #This application file is global
     end
   end
   
-  def destroy  
+  def destroy                      # Deletes a task
     @task= Task.find(params[:id])
     @task.destroy
 
