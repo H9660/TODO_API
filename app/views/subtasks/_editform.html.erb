@@ -1,0 +1,13 @@
+<%= form_with model: @subtask do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+    <p>
+      <%= form.label :completed %><br>
+      <%= form.check_box :completed %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+<% end %>

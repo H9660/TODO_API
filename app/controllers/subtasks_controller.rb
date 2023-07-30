@@ -1,6 +1,7 @@
 class SubtasksController < ApplicationController
+
   http_basic_authenticate_with name: "subtask_admin", password: "123", only: :destroy
-   
+  
     def create
         @task = Task.find(params[:task_id])
         @subtask = @task.subtasks.create!(subtask_params)   #creating a subtask
@@ -15,10 +16,10 @@ class SubtasksController < ApplicationController
       end
 
       def edit                           #updates a task
-        @task = Task.find(params[:task_id])
+        @task = Task.find(params[:id])
       end
     
-      def update                          # the is not working
+      def update                          # the is not working 
         @task = Task.find(params[:task_id])
         @subtask = @task.subtasks.find(params[:id])
         if @subtask.update(subtask_params)
@@ -29,6 +30,7 @@ class SubtasksController < ApplicationController
       end
 
       private
+      
         def subtask_params
           params.require(:subtask).permit(:title, :completed)
       end

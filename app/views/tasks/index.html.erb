@@ -6,7 +6,7 @@
   <div class="grid-container">
     <% @tasks.each do |task| %>
       <div>
-        <a href="<%= task_path(task) %>">
+        <a href="<%= task_path(task) %>">    <!-- this will redirect to show.html.erb of each task -->
           <%= task.title %>
         </a>
       </div>

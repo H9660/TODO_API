@@ -5,10 +5,20 @@ h1{
  .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
+    grid-gap: 20px;
     padding-bottom: 30px;
   }
+  
+  .grid-container p {
+  margin: 0px;
+  padding: 5px;
+  font-size: 15px;
+ }
 
+ .grid-container a {
+   margin-right: 10px; /* Adjust this value to set the spacing between the links */
+ }
+ 
   .other-headings{
    color:rgb(73, 5, 208);
   }

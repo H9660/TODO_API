@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   
   #This application file is globally available
   # Here the task is representing our data
-  http_basic_authenticate_with name: "task_admin", password: "123", except: [:index, :show, :destroy]
+  # http_basic_authenticate_with name: "task_admin", password: "123", except: [:index, :show, :destroy]
 
   def index    #these are called actions
     @tasks = Task.all                  #returns all the tasks
